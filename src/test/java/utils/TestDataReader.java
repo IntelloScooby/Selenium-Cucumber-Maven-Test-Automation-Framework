@@ -1,11 +1,10 @@
 package utils;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import gherkin.deps.com.google.gson.JsonObject;
+import gherkin.deps.com.google.gson.JsonParser;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.nio.file.Paths;
 import java.util.HashMap;
 
 import static utils.Constants.*;
@@ -13,7 +12,6 @@ import static utils.Constants.*;
 public class TestDataReader {
 
     private JsonParser parser = new JsonParser();
-    private String testDataFilePath = Paths.get(System.getProperty("user.dir")) + "/src/test/resources/TestData.json";
 
     public HashMap<String, String> getLoginDetails(String loginType) {
         HashMap<String, String> loginDetails = new HashMap<>();
@@ -21,7 +19,7 @@ public class TestDataReader {
 
         {
             try {
-                object = parser.parse(new FileReader(testDataFilePath));
+                object = parser.parse(new FileReader(TEST_DATA_FILE_PATH));
                 JsonObject allUserDetails = (JsonObject) ((JsonObject) object).get(LOGIN_CREDENTIALS);
                 JsonObject user = (JsonObject) allUserDetails.get(loginType);
                 loginDetails.put(USERNAME, user.get(USERNAME).getAsString());

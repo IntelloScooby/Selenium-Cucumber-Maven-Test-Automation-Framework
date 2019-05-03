@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -40,7 +41,7 @@ public class HomePage extends BasePage {
     }
 
     public boolean isLoginSuccessful() {
-        ArrayList<WebElement> accountButtons = new ArrayList<WebElement>();
+        ArrayList<WebElement> accountButtons = new ArrayList<>();
         accountButtons.add(logoutLink);
         accountButtons.add(myAccountButton);
         wait.until(ExpectedConditions.visibilityOfAllElements(accountButtons));
@@ -54,7 +55,7 @@ public class HomePage extends BasePage {
             if (logoutLink.isDisplayed()) {
                 logoutLink.click();
             }
-        } catch (NoSuchElementException e) {
+        } catch (NoSuchElementException | TimeoutException e) {
             //Do nothing
         }
     }
