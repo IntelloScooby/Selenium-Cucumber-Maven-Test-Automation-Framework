@@ -9,20 +9,13 @@ import pages.BasePage;
 
 import static utils.Constants.TEST_REPORT_FILE_PATH;
 
-/**
- * Created by mikita.shah on 1/05/2019.
- */
 public class TestReportGenerator {
 
     public static final ExtentReports EXTENT_REPORTS = new ExtentReports(TEST_REPORT_FILE_PATH, true, DisplayOrder.OLDEST_FIRST);
     public static ExtentTest EXTENT_TEST;
+
     private TestHelper helper = new TestHelper();
 
-    /**
-     * Print scenario status, take screen shot on test failure.
-     *
-     * @param scenario
-     */
     public void reportScenarioStatus(Scenario scenario) {
         String scenarioStatus = scenario.getStatus();
         if (scenarioStatus.equals("passed")) {
