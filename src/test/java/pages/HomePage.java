@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.ConfigReader;
 
 import java.util.ArrayList;
 
@@ -28,6 +29,7 @@ public class HomePage extends BasePage {
     private WebElement myAccountButton;
 
     private WebDriverWait wait = new WebDriverWait(driver, 5);
+    private ConfigReader config = new ConfigReader();
 
     public HomePage() {
         PageFactory.initElements(driver, this);
@@ -61,8 +63,8 @@ public class HomePage extends BasePage {
     }
 
     public void navigateToHomePage() {
-        if (!driver.getCurrentUrl().equals("https://www.officeworks.com.au")) {
-            driver.get("https://www.officeworks.com.au");
+        if (!driver.getCurrentUrl().equals(config.getBaseUrl())) {
+            driver.get(config.getBaseUrl());
         }
     }
 }
