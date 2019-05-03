@@ -1,12 +1,12 @@
 {
   "LoginCredentials": {
-    "ValidLogin": {
-      "username": "testmail@grr.la",
-      "password": "Welcome@123"
+    "ValidUser": {
+      "Username": "testmail@grr.la",
+      "Password": "Welcome@123"
     },
-    "InvalidLogin": {
-      "username": "invalid@grr.la",
-      "password": "Password123"
+    "InvalidUser": {
+      "Username": "invalid@grr.la",
+      "Password": "Password123"
     }
   }
 }
