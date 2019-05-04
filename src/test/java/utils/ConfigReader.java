@@ -10,38 +10,28 @@ import static utils.Constants.TEST_CONFIG_FILE_PATH;
 public class ConfigReader {
 
     public String getBaseUrl() {
-
-        String baseUrl = "";
-
-        try {
-            InputStream input = new FileInputStream(TEST_CONFIG_FILE_PATH);
-
-            Properties prop = new Properties();
-            prop.load(input);
-            baseUrl = prop.getProperty("baseUrl");
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-        return baseUrl;
+        return getPropertyValue("baseUrl");
     }
 
     public String getBrowser() {
-        String browser = "";
+        return getPropertyValue("browser");
+    }
+
+    private String getPropertyValue(String propertyKey) {
+        String propertyValue = "";
 
         try {
             InputStream input = new FileInputStream(TEST_CONFIG_FILE_PATH);
 
             Properties prop = new Properties();
             prop.load(input);
-            browser = prop.getProperty("browser");
+            propertyValue = prop.getProperty(propertyKey);
 
         } catch (IOException ex) {
             ex.printStackTrace();
         }
 
-        return browser;
+        return propertyValue;
     }
 
 }

@@ -6,8 +6,10 @@ import gherkin.deps.com.google.gson.JsonParser;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.HashMap;
+import java.util.logging.Level;
 
 import static utils.Constants.*;
+import static utils.TestReportGenerator.LOGGER;
 
 public class TestDataReader {
 
@@ -26,6 +28,7 @@ public class TestDataReader {
                 loginDetails.put(PASSWORD, user.get(PASSWORD).getAsString());
 
             } catch (FileNotFoundException e) {
+                LOGGER.log(Level.INFO, "Unable to find file at path: " + TEST_DATA_FILE_PATH);
                 e.printStackTrace();
             }
         }
