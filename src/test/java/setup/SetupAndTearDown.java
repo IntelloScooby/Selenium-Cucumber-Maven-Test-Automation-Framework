@@ -16,7 +16,7 @@ public class SetupAndTearDown {
 
         ConfigReader config = new ConfigReader();
 
-        switch (config.getBrowser()){
+        switch (config.getBrowser()) {
             case "chrome":
                 System.setProperty("webdriver.chrome.driver", "src/test/chromedriver-74");
                 BasePage.driver = new ChromeDriver();
