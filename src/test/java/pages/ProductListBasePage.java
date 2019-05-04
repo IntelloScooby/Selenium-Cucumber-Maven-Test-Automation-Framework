@@ -24,7 +24,7 @@ public class ProductListBasePage extends BasePage {
     }
 
     public ArrayList<String> addProductsToCart(int productCount) {
-
+        driver.manage().window().maximize();
         ArrayList<String> productsAddedToCart = new ArrayList<>();
         for (int i = 0; i < productCount; i++) {
             productsAddedToCart.add(allProductNames.get(i).getText());
