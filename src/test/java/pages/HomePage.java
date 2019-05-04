@@ -10,6 +10,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.ConfigReader;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+
+import static utils.TestReportGenerator.LOGGER;
 
 public class HomePage extends BasePage {
 
@@ -27,6 +30,9 @@ public class HomePage extends BasePage {
 
     @FindBy(linkText = "My Account")
     private WebElement myAccountButton;
+
+    @FindBy(css = "div[class^='ToolTip__Popover']")
+    private WebElement errorToolTip;
 
     private WebDriverWait wait = new WebDriverWait(driver, 5);
     private ConfigReader config = new ConfigReader();
@@ -58,7 +64,7 @@ public class HomePage extends BasePage {
                 logoutLink.click();
             }
         } catch (NoSuchElementException | TimeoutException e) {
-            //Do nothing
+            LOGGER.log(Level.INFO, "User is already logged off");
         }
     }
 
@@ -66,5 +72,10 @@ public class HomePage extends BasePage {
         if (!driver.getCurrentUrl().equals(config.getBaseUrl())) {
             driver.get(config.getBaseUrl());
         }
+    }
+
+    public String getLoginErrorMessage() {
+        wait.until(ExpectedConditions.visibilityOf(errorToolTip));
+        return errorToolTip.getText();
     }
 }
