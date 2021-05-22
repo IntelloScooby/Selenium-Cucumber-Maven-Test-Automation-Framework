@@ -1,4 +1,4 @@
-# LexiconCodeChallenge
+# Sample automation framework
 
 
 ## Test Scenario:
