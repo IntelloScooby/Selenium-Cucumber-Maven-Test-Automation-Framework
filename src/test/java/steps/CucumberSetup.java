@@ -3,10 +3,6 @@ package steps;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
-import org.openqa.selenium.NoSuchElementException;
-import pages.HomePage;
-import pages.MiniCartDropdown;
-import pages.ReviewCartPage;
 import pages.TopNavigationMenu;
 import utils.TestReportGenerator;
 
@@ -24,10 +20,7 @@ public class CucumberSetup {
     @After
     public void afterScenario(Scenario scenario) {
 
-        HomePage homePage = new HomePage();
-        ReviewCartPage cartPage = new ReviewCartPage();
         TopNavigationMenu topNavigationMenu = new TopNavigationMenu();
-        MiniCartDropdown miniCart = new MiniCartDropdown();
 
         //take screen shot right on failure, keep this at top
         TestReportGenerator reporter = new TestReportGenerator();
@@ -36,18 +29,7 @@ public class CucumberSetup {
         EXTENT_REPORTS.endTest(EXTENT_TEST);
 
         if (scenario.getSourceTagNames().contains("@AfterScenarioLogoff")) {
-            homePage.navigateToHomePage();
-            homePage.logoffUser();
-        }
-
-        if (scenario.getSourceTagNames().contains("@AfterScenarioEmptyCart")) {
-            try {
-                cartPage.emptyCart();
-            } catch (NoSuchElementException e) {
-                topNavigationMenu.hoverOnCartOption();
-                miniCart.clickViewCart();
-                cartPage.emptyCart();
-            }
+            topNavigationMenu.logoffUser();
         }
 
     }

@@ -12,8 +12,8 @@ public class Constants {
     public static final String TEST_CONFIG_FILE_PATH = PROJECT_PATH + "/src/test/resources/config.properties";
 
     //    Application messages
-    public static final String HOME_PAGE_TITLE = "Office Supplies, Stationery & Office Furniture at the Lowest Prices | Officeworks";
-    public static final String INVALID_LOGIN_ERROR_MESSAGE = "Login information entered is incorrect. Please try again.";
+    public static final String HOME_PAGE_TITLE = "Officeworks | Stationery, Laptops, Furniture, Paper at Low Prices";
+    public static final String INVALID_LOGIN_ERROR_MESSAGE = "Sorry, your details were incorrect and we could not log you in. Please try again.";
 
     //    Test Data file constants
     public static final String LOGIN_CREDENTIALS = "LoginCredentials";

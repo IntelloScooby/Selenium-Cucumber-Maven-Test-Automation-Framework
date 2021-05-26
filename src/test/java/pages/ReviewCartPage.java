@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ReviewCartPage extends BasePage {
 
-    @FindBy(className = "cartProductDetailLink")
+    @FindBy(css = "a[class^='ProductInfo__ProductNameWithLink']")
     private List<WebElement> allProductsInCart;
 
     @FindBy(linkText = "Empty Cart")

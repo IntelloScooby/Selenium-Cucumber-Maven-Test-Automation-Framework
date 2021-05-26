@@ -8,7 +8,7 @@ import utils.TestHelper;
 
 public class MiniCartDropdown extends BasePage {
 
-    @FindBy(css = "button[class^='MiniCart__StyledButton']")
+    @FindBy(css = "button[data-ref='minicart-checkout-btn']")
     private WebElement viewCartButton;
 
     private TestHelper helper = new TestHelper();

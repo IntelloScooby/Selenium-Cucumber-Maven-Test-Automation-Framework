@@ -17,6 +17,7 @@ import static utils.Constants.*;
 public class StepDefs extends BasePage {
 
     private HomePage homePage = new HomePage();
+    private LoginPage loginPage = new LoginPage();
     private BasePage basePage = new BasePage();
     private TopNavigationMenu topNavigationMenu = new TopNavigationMenu();
     private MiniCartDropdown miniCartDropdown = new MiniCartDropdown();
@@ -30,7 +31,8 @@ public class StepDefs extends BasePage {
 
     @Then("^the user is able to login successfully$")
     public void theUserIsAbleToLoginSuccessfully() {
-        Assert.assertTrue(homePage.isLoginSuccessful(), "Unable to successfully login");
+        helper.waitForPageToLoad(driver);
+        Assert.assertTrue(topNavigationMenu.isMyAccountButtonDisplayed(), "Unable to successfully login");
     }
 
     @Given("^the home page is displayed$")
@@ -45,7 +47,8 @@ public class StepDefs extends BasePage {
         HashMap<String, String> loginDetails = dataReader.getLoginDetails(VALID_USER);
         String username = loginDetails.get(USERNAME);
         String password = loginDetails.get(PASSWORD);
-        homePage.loginUser(username, password);
+        topNavigationMenu.navigateToLoginPage();
+        loginPage.loginUser(username, password);
     }
 
     @Given("^the user is logged into the website$")
@@ -54,11 +57,13 @@ public class StepDefs extends BasePage {
         HashMap<String, String> loginDetails = dataReader.getLoginDetails(VALID_USER);
         String username = loginDetails.get(USERNAME);
         String password = loginDetails.get(PASSWORD);
-        homePage.loginUser(username, password);
+        topNavigationMenu.navigateToLoginPage();
+        loginPage.loginUser(username, password);
     }
 
     @When("^the user clicks on the \"([^\"]*)\" option from the top menu$")
     public void theUserClicksOnTheOptionFromTheTopMenu(String menuOption) {
+        helper.waitForPageToLoad(driver);
         topNavigationMenu.clickOnMenuOption(menuOption);
         Assert.assertEquals(basePage.getPageName(), menuOption);
     }
@@ -107,11 +112,17 @@ public class StepDefs extends BasePage {
         HashMap<String, String> loginDetails = dataReader.getLoginDetails(INVALID_USER);
         String username = loginDetails.get(USERNAME);
         String password = loginDetails.get(PASSWORD);
-        homePage.loginUser(username, password);
+        topNavigationMenu.navigateToLoginPage();
+        loginPage.loginUser(username, password);
     }
 
     @Then("^the user is unable to login$")
     public void theUserIsUnableToLogin() {
-        Assert.assertEquals(homePage.getLoginErrorMessage(), INVALID_LOGIN_ERROR_MESSAGE);
+        Assert.assertEquals(loginPage.getLoginErrorMessage(), INVALID_LOGIN_ERROR_MESSAGE);
+    }
+
+    @Given("^the user navigates to home page$")
+    public void theUserNavigatesToHomePage() {
+        homePage.navigateToHomePage();
     }
 }
