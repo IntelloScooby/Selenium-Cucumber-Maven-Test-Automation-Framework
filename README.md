@@ -45,6 +45,13 @@ To run FullRegression test suite:
 mvn clean test -DtestSuite=FullRegression
 `
 
+https://user-images.githubusercontent.com/11371576/119584666-5f23d180-be0c-11eb-9cfc-9638510acb58.mp4
+
+
+https://user-images.githubusercontent.com/11371576/119584989-21737880-be0d-11eb-9e07-408bcc4458b5.mp4
+
+
+
 ### Run from IntelliJ
 
 * Clone the project
@@ -54,6 +61,11 @@ mvn clean test -DtestSuite=FullRegression
 
 The test results can be viewed in the console logs. Along with that, at the end of the test an HTML report is also generated. It is located at `'/src/test/resources/test-output/CustomTestReport.html'`
 If any test fails, a screenshot of the page where the test failed is also attached to the report across corresponding scenario. This report gets overwritten when a new test is run. 
+
+
+https://user-images.githubusercontent.com/11371576/119585039-38b26600-be0d-11eb-8bde-60afbc4a6c74.mp4
+
+
 
 ## Framework Details
 
